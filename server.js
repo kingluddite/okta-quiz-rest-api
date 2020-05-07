@@ -1,5 +1,6 @@
 // environment variables
-require('dotenv').config();
+// require('dotenv').config();
+import 'dotenv/config';
 const express = require('express');
 const app = express();
 const exphbs = require('express-handlebars');
@@ -11,6 +12,9 @@ const question = require('./routes/question.route');
 // assign port for prod and dev environments
 const PORT = process.env.PORT || 3333;
 // set express app to handle data parsing
+
+console.log('Hello Node.js project.');
+
 app.use(cors()); // We're telling express to use CORS
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // also tell server to use JSON as well
