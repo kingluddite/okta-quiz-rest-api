@@ -1,22 +1,31 @@
-const Question = require('../models/question.model'); // include our model
+import Question from '../models/question.model';
+// const Question = require('../models/question.model'); // include our model
 
 // simple version, without validation or sanitation
 // exports.test = function(req, res) {
 //   res.send('Greetings from the Test controller!');
 // };
 
-// show all questions
-exports.questionAll = async (req, res) => {
+/**
+ * Show all questions
+ * @param {object} req request
+ * @param {object} res response
+ */
+export const questionAll = async (req, res) => {
   try {
     const questions = await Question.find();
     return res.status(200).json(questions);
   } catch (error) {
     return res.status(500).json({ error: error });
   }
-}
+};
 
-// create a question
-exports.questionCreate = async (req, res) => {
+/**
+ * Create a question
+ * @param {object} req request
+ * @param {object} res response
+ */
+export const questionCreate = async (req, res) => {
   try {
     const { description } = req.body;
     const { alternatives } = req.body;
@@ -32,8 +41,12 @@ exports.questionCreate = async (req, res) => {
   }
 };
 
-// show a question detail
-exports.questionDetails = async (req, res) => {
+/**
+ * Show a question detail
+ * @param {object} req request
+ * @param {object} res response
+ */
+export const questionDetails = async (req, res) => {
   try {
     const _id = req.params.id;
 
@@ -48,8 +61,12 @@ exports.questionDetails = async (req, res) => {
   }
 };
 
-// update a question
-exports.questionUpdate = async (req, res) => {
+/**
+ * Update a question
+ * @param {object} req request
+ * @param {object} res response
+ */
+export const questionUpdate = async (req, res) => {
   try {
     const _id = req.params.id;
     const { description, alternatives } = req.body;
@@ -73,8 +90,12 @@ exports.questionUpdate = async (req, res) => {
   }
 };
 
-// delete a question
-exports.questionDelete = async (req, res) => {
+/**
+ * Delete a questio
+ * @param {object} req request
+ * @param {object} res response
+ */
+export const questionDelete = async (req, res) => {
   try {
     const _id = req.params.id;
 

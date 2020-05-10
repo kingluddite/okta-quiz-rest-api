@@ -1,7 +1,13 @@
-const express = require('express');
+import express from 'express';
 const router = express.Router();
 
-const questionController = require('../controllers/question.controller');
+import {
+  questionAll,
+  questionCreate,
+  questionDetails,
+  questionUpdate,
+  questionDelete,
+} from '../controllers/question.controller.js';
 
 // **note** all routes start with `/questions/`
 
@@ -10,22 +16,22 @@ const questionController = require('../controllers/question.controller');
 
 // show all questions
 // /questions/all
-router.get('/all', questionController.questionAll);
+router.get('/all', questionAll);
 
 // create a question route
 // /questions/create
-router.post('/create', questionController.questionCreate);
+router.post('/create', questionCreate);
 
 // read a question route
 // /questions/SOME_ID
-router.get('/:id', questionController.questionDetails);
+router.get('/:id', questionDetails);
 
 // update a question
 // /questions/SOME_ID/update
-router.put('/:id/update', questionController.questionUpdate);
+router.put('/:id/update', questionUpdate);
 
 // delete a question
 // /questions/SOME_ID/delete
-router.delete('/:id/delete', questionController.questionDelete);
+router.delete('/:id/delete', questionDelete);
 
-module.exports = router;
+export default router;

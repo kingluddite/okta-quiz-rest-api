@@ -65,3 +65,6 @@
 
 ![Compass question collection](https://i.imgur.com/uJdTvu1.png)
 
+## JSDoc tutorial
+* [video](https://www.youtube.com/watch?time_continue=22&v=Yl6WARA3IhQ&feature=emb_logo)
+* [A Guide to using JSDoc for React.js | Better Documentation in React](https://www.inkoop.io/blog/a-guide-to-js-docs-for-react-js/)
