@@ -18,7 +18,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 // exports.test = function(req, res) {
 //   res.send('Greetings from the Test controller!');
 // };
-// show all questions
+
+/**
+ * Show all questions
+ * @param {object} req request
+ * @param {object} res response
+ */
 var questionAll = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(req, res) {
     var questions;
@@ -52,7 +57,12 @@ var questionAll = /*#__PURE__*/function () {
   return function questionAll(_x, _x2) {
     return _ref.apply(this, arguments);
   };
-}(); // create a question
+}();
+/**
+ * Create a question
+ * @param {object} req request
+ * @param {object} res response
+ */
 
 
 exports.questionAll = questionAll;
@@ -95,7 +105,12 @@ var questionCreate = /*#__PURE__*/function () {
   return function questionCreate(_x3, _x4) {
     return _ref2.apply(this, arguments);
   };
-}(); // show a question detail
+}();
+/**
+ * Show a question detail
+ * @param {object} req request
+ * @param {object} res response
+ */
 
 
 exports.questionCreate = questionCreate;
@@ -150,7 +165,12 @@ var questionDetails = /*#__PURE__*/function () {
   return function questionDetails(_x5, _x6) {
     return _ref3.apply(this, arguments);
   };
-}(); // update a question
+}();
+/**
+ * Update a question
+ * @param {object} req request
+ * @param {object} res response
+ */
 
 
 exports.questionDetails = questionDetails;
@@ -220,7 +240,12 @@ var questionUpdate = /*#__PURE__*/function () {
   return function questionUpdate(_x7, _x8) {
     return _ref4.apply(this, arguments);
   };
-}(); // delete a question
+}();
+/**
+ * Delete a questio
+ * @param {object} req request
+ * @param {object} res response
+ */
 
 
 exports.questionUpdate = questionUpdate;

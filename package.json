@@ -26,8 +26,8 @@
     "clean": "rimraf dist-server",
     "docs": "./node_modules/.bin/jsdoc -c jsdoc.json"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["Express", "CORS", "Node.js", "babel", "Mongoose", "MongoDB", "nodemon", "eslint", "prettier", "morgan", "handlebars", "JSDocs", "dotenv"],
+  "author": "kingluddite",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
@@ -45,8 +45,20 @@
     "@babel/core": "^7.9.6",
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.6",
+    "babel-eslint": "^9.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.1",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-config-wesbos": "0.0.19",
+    "eslint-plugin-html": "^5.0.5",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "jsdoc": "^3.6.4",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.3",
+    "prettier": "^1.19.1"
   }
 }

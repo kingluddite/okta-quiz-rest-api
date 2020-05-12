@@ -1,5 +1,13 @@
-const mongoose = require('mongoose');
+/**
+ * The data-layer for a Okta questions
+ * @module models
+ */
+import mongoose from 'mongoose';
 
+/**
+ * Question schema
+ * @constructor Question
+ */
 const QuestionSchema = new mongoose.Schema({
   description: String,
   alternatives: [

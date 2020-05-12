@@ -1,21 +1,28 @@
 // environment variables
 import 'dotenv/config.js';
-import regeneratorRuntime from 'regenerator-runtime';
+// import regeneratorRuntime from 'regenerator-runtime';
 import express from 'express';
-const app = express();
 import exphbs from 'express-handlebars';
 import path from 'path';
 import mongoose from 'mongoose';
 import logger from 'morgan';
 import cors from 'cors';
-import question from './routes/question.route.js';
-// assign port for prod and dev environments
-const PORT = process.env.PORT || 3333;
-// set express app to handle data parsing
+// import question from './routes/question.route.js';
 
+// Run some test logs to make sure stuff is working
 console.log('Hello Node.js project.');
 console.log(process.env.TEST_DOTENV);
+
+// Create global app object
+const app = express();
+
 app.use(cors()); // We're telling express to use CORS
+
+// Assign port for prod and dev environments
+const PORT = process.env.PORT || 3333;
+
+// Normal express config defaults
+// Set express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // also tell server to use JSON as well
 
@@ -26,9 +33,24 @@ app.use(logger('dev'));
 // since inside server need to go up to parent directory
 app.use(express.static(path.join(__dirname, '../public')));
 
-// start using the routes
-// app.use('/questions', question);
+/**
+ * Database: MongoDB
+ */
+// DB connection
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Global Thermo Nuclear DB War!'));
+
+db.on('error', error => console.log(error));
+db.once('open', () => console.log('database connected'));
+
+/**
+ * VIEW ENGINE: Handlebars
+ */
 // add handlebars
 // change view engine to handlebars
 // truncate handlebars to hbs
@@ -48,40 +70,60 @@ app.engine(
   })
 );
 
-// db connection
-mongoose.connect(process.env.DATABASE_URL, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+/**
+ * MODELS
+ */
 
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'Global Thermo Nuclear DB War!'));
+/**
+ * ROUTES
+ */
+// app.use('/questions', question);
 
-db.on('error', error => console.log(error));
-db.once('open', () => console.log('database connected'));
-
-// Routes
 // Index route
 // set up home route
 // app.get('/', (req, res) => res.send('INDEX'));
-app.get('/', (req, res) => res.render('index', { layout: 'landing' }));
+// BRING THIS BOTTOM LINE BACK
+// app.get('/', (req, res) => res.render('index', { layout: 'landing' }));
 // app.get('/', (req, res) => res.render('index'));
 
-// catch 404 and forward to error handler
+app.get('/users', (req, res) => {
+  return res.send('GET HTTP method on user resource');
+});
+
+app.post('/users', (req, res) => {
+  return res.send('POST HTTP method on user resource');
+});
+
+app.put('/users/:userId', (req, res) => {
+  return res.send(`PUT HTTP method on user/${req.params.userId} resource`);
+});
+
+app.delete('/users/:userId', (req, res) => {
+  return res.send(`DELETE HTTP method on user/${req.params.userId} resource`);
+});
+
+/**
+ * Catch 404 and forward to error handler
+ */
 // app.use(function(req, res, next) {
 //   next(createError(404));
 // });
-//
-// // error handler
+
+/**
+ * error handler
+ */
 // app.use(function(err, req, res, next) {
-//   // set locals, only providing error in development
+//   // Set locals, only providing error in development
 //   res.locals.message = err.message;
 //   res.locals.error = req.app.get('env') === 'development' ? err : {};
 //
-//   // render the error page
+//   // Nender the error page
 //   res.status(err.status || 500);
 //   res.render('error');
 // });
 
+/**
+ *  Finally, let's start our server...
+ */
 // tell the app to listen on a given port
 app.listen(PORT, console.log(`The API is running on port ${PORT}`));

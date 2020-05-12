@@ -11,10 +11,8 @@ var _questionController = require("../controllers/question.controller.js");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-// const express = require('express');
 var router = _express["default"].Router();
 
-// const questionController = require('../controllers/question.controller');
 // **note** all routes start with `/questions/`
 // test to check that all or our files are communicating correctly
 // router.get('/test', questionController.test);
@@ -32,7 +30,6 @@ router.get('/:id', _questionController.questionDetails); // update a question
 router.put('/:id/update', _questionController.questionUpdate); // delete a question
 // /questions/SOME_ID/delete
 
-router["delete"]('/:id/delete', _questionController.questionDelete); // module.exports = router;
-
+router["delete"]('/:id/delete', _questionController.questionDelete);
 var _default = router;
 exports["default"] = _default;

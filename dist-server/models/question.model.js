@@ -1,8 +1,19 @@
 "use strict";
 
-var mongoose = require('mongoose');
+var _mongoose = _interopRequireDefault(require("mongoose"));
 
-var QuestionSchema = new mongoose.Schema({
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+
+/**
+ * The data-layer for a Okta questions
+ * @module models
+ */
+
+/**
+ * Question schema
+ * @constructor Question
+ */
+var QuestionSchema = new _mongoose["default"].Schema({
   description: String,
   alternatives: [{
     text: {
@@ -16,4 +27,4 @@ var QuestionSchema = new mongoose.Schema({
     }
   }]
 });
-module.exports = mongoose.model('Question', QuestionSchema);
+module.exports = _mongoose["default"].model('Question', QuestionSchema);
